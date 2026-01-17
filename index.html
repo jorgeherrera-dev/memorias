@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
             --dark: #212529;
             --success: #4cc9f0;
             --warning: #f8961e;
-            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
 
@@ -120,6 +121,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -349,8 +351,15 @@
 
         /* Animations */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .floating {
@@ -358,8 +367,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .pulse {
@@ -492,8 +508,214 @@
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
+
+        /* ========== NUEVO CÓDIGO PARA LÍNEA DE TIEMPO DE IMÁGENES ========== */
+        .timeline-images {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 0;
+            margin: 2rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) #f0f0f0;
+        }
+
+        .timeline-images::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-images::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .timeline-images::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .memory-item {
+            flex: 0 0 auto;
+            width: 100px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .memory-img-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            padding: 10px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .memory-item:hover .memory-img-container {
+            border-color: var(--accent);
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .memory-year {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .memory-name {
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        /* Modal para imágenes ampliadas */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-info {
+            margin-top: 15px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos responsivos para la línea de tiempo */
+        @media (max-width: 768px) {
+            .timeline-images {
+                gap: 10px;
+                padding: 15px 0;
+            }
+
+            .memory-item {
+                width: 85px;
+            }
+
+            .memory-img-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .memory-year {
+                font-size: 0.8rem;
+            }
+
+            .memory-name {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Mejora para el grid de comparación */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Ajuste para el contenedor de contenido */
+        .content-section {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .content-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Nuevo estilo para sección de línea de tiempo */
+        .timeline-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* ========== FIN DEL NUEVO CÓDIGO ========== */
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="nav-container">
@@ -519,35 +741,36 @@
     <div class="slides-container">
         <!-- Slide 1: Cover (Persona 1) -->
         <div class="slide active" id="slide1">
-            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">From Stones to Clouds</h1>
-            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--success);">How we learned to store our bits</h2>
-            
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">How Memory Shapes Technology</h1>
+            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--success);">How we learned to store our data
+            </h2>
+
             <div class="memory-icon floating">
                 <i class="fas fa-sd-card"></i>
             </div>
-            
+
             <p style="font-size: 1.2rem; max-width: 600px; margin: 2rem auto;">
                 The evolution of digital memory
             </p>
-            
+
             <div class="team-members">
                 <div class="member">
                     <h3><i class="fas fa-user"></i> Introduction</h3>
                 </div>
                 <div class="member">
-                    <h3><i class="fas fa-user"></i> Member 1</h3>
+                    <h3><i class="fas fa-user"></i> 1</h3>
                     <p>RAM Memory</p>
                 </div>
                 <div class="member">
-                    <h3><i class="fas fa-user"></i> Member 2</h3>
+                    <h3><i class="fas fa-user"></i> 2</h3>
                     <p>HDD & Storage</p>
                 </div>
                 <div class="member">
-                    <h3><i class="fas fa-user"></i> Member 3</h3>
+                    <h3><i class="fas fa-user"></i> 3</h3>
                     <p>SSD & Future</p>
                 </div>
                 <div class="member">
-                    <h3><i class="fas fa-user"></i> Member 4</h3>
+                    <h3><i class="fas fa-user"></i> 4</h3>
                     <p>Comparison & The Future</p>
                 </div>
                 <div class="member">
@@ -561,23 +784,23 @@
             </div>
         </div>
 
-        <!-- Slide 2: RAM (Persona 2) -->
+        <!-- Slide 2: RAM (1) -->
         <div class="slide" id="slide2">
             <div class="slide-header">
                 <div class="speaker-badge">
-                    <i class="fas fa-user"></i> Presented by: Person 2
+                    <i class="fas fa-user"></i> 1
                 </div>
                 <i class="fas fa-brain"></i>
                 <h2>RAM: The Computer's Short-Term Memory</h2>
                 <p class="subtitle">Your computer's work desk</p>
             </div>
-            
+
             <div class="content-section">
                 <div>
                     <div class="question-bubble">
                         <strong>Think about:</strong> Why does your computer get slow when you open many Chrome tabs?
                     </div>
-                    
+
                     <div class="comparison-grid">
                         <div class="memory-card pulse">
                             <i class="fas fa-history"></i>
@@ -599,20 +822,23 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="quiz-container">
                         <div class="quiz-question">
                             What happens to RAM when you turn off the computer?
                         </div>
                         <div class="quiz-options">
-                            <div class="quiz-option" onclick="showAnswer(this, 'Exactly! RAM is like your short-term memory - it forgets when you sleep.', 'slide2')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Exactly! RAM is like your short-term memory - it forgets when you sleep.', 'slide2')">
                                 Everything gets erased
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'Almost, but not exactly. RAM needs constant electricity to remember.', 'slide2')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Almost, but not exactly. RAM needs constant electricity to remember.', 'slide2')">
                                 It saves to the disk
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'No, RAM is volatile - it needs power to keep data.', 'slide2')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'No, RAM is volatile - it needs power to keep data.', 'slide2')">
                                 Stays the same
                             </div>
                         </div>
@@ -625,18 +851,19 @@
 
                     <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
                         <h4><i class="fas fa-info-circle"></i> Key Concept</h4>
-                        <p><strong>RAM is volatile:</strong> Needs constant power. Like your thoughts when you're awake.</p>
+                        <p><strong>RAM is volatile:</strong> Needs constant power. Like your thoughts when you're awake.
+                        </p>
                         <p><strong>More RAM =</strong> More programs open at once without slowing down.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: HDD (Persona 3) -->
+        <!-- Slide 3: HDD (2) -->
         <div class="slide" id="slide3">
             <div class="slide-header">
                 <div class="speaker-badge">
-                    <i class="fas fa-user"></i> Presented by: Person 3
+                    <i class="fas fa-user"></i> 2
                 </div>
                 <i class="fas fa-compact-disc"></i>
                 <h2>HDD: The Giant Filing Cabinet</h2>
@@ -648,7 +875,7 @@
                     <div class="question-bubble">
                         <strong>Think about:</strong> Why do hard drives make that "click-click" sound when working?
                     </div>
-                    
+
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-content">
@@ -673,25 +900,28 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="quiz-container">
                         <div class="quiz-question">
                             Why don't smartphones use hard drives (HDD)?
                         </div>
                         <div class="quiz-options">
-                            <div class="quiz-option" onclick="showAnswer(this, 'Correct! HDDs have moving parts that would break with phone movement.', 'slide3')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Correct! HDDs have moving parts that would break with phone movement.', 'slide3')">
                                 Because they move a lot and would break
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'HDDs use less power than SSDs, but that\'s not the main reason.', 'slide3')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'HDDs use less power than SSDs, but that\'s not the main reason.', 'slide3')">
                                 They use too much energy
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'Modern HDDs are very small, but still have delicate moving parts.', 'slide3')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Modern HDDs are very small, but still have delicate moving parts.', 'slide3')">
                                 They are too big
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="stats-container">
                         <div class="stat-item">
                             <div class="stat-number" id="hddSpeed">0</div>
@@ -709,17 +939,18 @@
 
                     <div class="fun-fact">
                         <h4><i class="fas fa-dollar-sign"></i> Cost Efficiency</h4>
-                        <p>HDDs are the cheapest way to store lots of data. Perfect for backups, movies, and photo libraries.</p>
+                        <p>HDDs are the cheapest way to store lots of data. Perfect for backups, movies, and photo
+                            libraries.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: SSD (Part 1 of Persona 4) -->
+        <!-- Slide 4: SSD (3) -->
         <div class="slide" id="slide4">
             <div class="slide-header">
                 <div class="speaker-badge">
-                    <i class="fas fa-user"></i> Presented by: Person 4 (Part 1)
+                    <i class="fas fa-user"></i> 3
                 </div>
                 <i class="fas fa-bolt"></i>
                 <h2>SSD: The Flash Revolution</h2>
@@ -731,54 +962,59 @@
                     <div class="question-bubble">
                         <strong>Think about:</strong> Why are SSDs more expensive than HDDs if they are smaller?
                     </div>
-                    
+
                     <div style="text-align: center; margin: 1.5rem 0;">
                         <div style="font-size: 3.5rem; color: var(--accent);" class="floating">
                             <i class="fas fa-tachometer-alt"></i>
                         </div>
                     </div>
-                    
+
                     <h3 style="text-align: center; margin: 1.5rem 0;">Speed Comparison</h3>
-                    
+
                     <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
                         <div style="text-align: center;">
                             <div style="font-size: 2rem; color: var(--warning);">
                                 <i class="fas fa-hdd"></i>
                             </div>
                             <h4>HDD</h4>
-                            <div style="background: var(--warning); height: 40px; width: 80px; border-radius: 10px;"></div>
+                            <div style="background: var(--warning); height: 40px; width: 80px; border-radius: 10px;">
+                            </div>
                             <p>1-2 minutes<br>to boot</p>
                         </div>
-                        
+
                         <div style="text-align: center;">
                             <div style="font-size: 2rem; color: var(--success);">
                                 <i class="fas fa-sd-card"></i>
                             </div>
                             <h4>SSD</h4>
-                            <div style="background: var(--success); height: 120px; width: 80px; border-radius: 10px;"></div>
+                            <div style="background: var(--success); height: 120px; width: 80px; border-radius: 10px;">
+                            </div>
                             <p>10-20 seconds<br>Ready to use!</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="quiz-container">
                         <div class="quiz-question">
                             What does it mean that an SSD has limited "write cycles"?
                         </div>
                         <div class="quiz-options">
-                            <div class="quiz-option" onclick="showAnswer(this, 'Exactly! Each flash memory cell can be written and erased a limited number of times before wearing out.', 'slide4')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Exactly! Each flash memory cell can be written and erased a limited number of times before wearing out.', 'slide4')">
                                 It can be written a limited number of times
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'Not exactly. Modern SSDs last many years with normal use.', 'slide4')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Not exactly. Modern SSDs last many years with normal use.', 'slide4')">
                                 It breaks after one year
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'SSDs don\'t have a motor, so it\'s not about heat.', 'slide4')">
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'SSDs don\'t have a motor, so it\'s not about heat.', 'slide4')">
                                 It gets too hot
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="fun-fact">
                         <h4><i class="fas fa-chart-line"></i> Price Evolution</h4>
                         <p><strong>2010:</strong> 256GB SSD = $500 (like a PlayStation!)</p>
@@ -796,85 +1032,188 @@
             </div>
         </div>
 
-        <!-- Slide 5: Comparison & Future (Part 2 of Persona 4) -->
+        <!-- ========== SLIDE 5 MEJORADA CON LÍNEA DE TIEMPO DE IMÁGENES ========== -->
+        <!-- Slide 5: Comparison & Future (4) -->
         <div class="slide" id="slide5">
             <div class="slide-header">
                 <div class="speaker-badge">
-                    <i class="fas fa-user"></i> Presented by: Person 4 (Part 2)
+                    <i class="fas fa-user"></i> 4
                 </div>
                 <i class="fas fa-rocket"></i>
                 <h2>Comparison & The Future</h2>
-                <p class="subtitle">What to choose and what comes next</p>
+                <p class="subtitle">Evolution of Storage Technology</p>
+            </div>
+
+            <!-- LÍNEA DE TIEMPO DE IMÁGENES -->
+            <div class="timeline-section">
+                <h3 class="timeline-title">
+                    <i class="fas fa-history"></i> Memory Evolution Timeline
+                </h3>
+
+                <div class="timeline-images" id="memoryTimeline">
+                    <!-- Las imágenes se cargarán con JavaScript -->
+                </div>
+
+                <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                    ← Scroll to see more • Click images to enlarge →
+                </p>
             </div>
 
             <div class="content-section">
                 <div>
                     <div class="question-bubble">
-                        <strong>Think about:</strong> If you had $100 to improve your computer, would you buy more RAM or an SSD?
+                        <strong>Think about:</strong> If you had $100 to improve your computer, would you buy more RAM
+                        or an SSD?
                     </div>
-                    
+
                     <div class="comparison-grid">
                         <div class="memory-card" onclick="selectMemory(this, 'hdd')">
-                            <i class="fas fa-book"></i>
+                            <i class="fas fa-hdd"></i>
                             <h3>HDD</h3>
                             <p>Like a 1000-page book</p>
                             <p><strong>Perfect for:</strong> Cheap storage</p>
                             <small>Watch out for drops!</small>
                         </div>
                         <div class="memory-card" onclick="selectMemory(this, 'ssd')">
-                            <i class="fas fa-tablet-alt"></i>
+                            <i class="fas fa-sd-card"></i>
                             <h3>SSD</h3>
                             <p>Like an e-book reader</p>
                             <p><strong>Perfect for:</strong> Daily speed</p>
                             <small>Don't fill it completely</small>
                         </div>
                         <div class="memory-card" onclick="selectMemory(this, 'ram')">
-                            <i class="fas fa-desktop"></i>
+                            <i class="fas fa-memory"></i>
                             <h3>RAM</h3>
                             <p>Like your desk</p>
                             <p><strong>Perfect for:</strong> Current work</p>
                             <small>Too little = everything slows</small>
                         </div>
+                        <div class="memory-card" onclick="selectMemory(this, 'cloud')">
+                            <i class="fas fa-cloud"></i>
+                            <h3>Cloud</h3>
+                            <p>Like a storage unit</p>
+                            <p><strong>Perfect for:</strong> Access anywhere</p>
+                            <small>Need internet connection</small>
+                        </div>
                     </div>
 
-                    <div id="selectionResult" style="margin-top: 1.5rem; padding: 1rem; background: var(--light); border-radius: 10px; display: none;">
+                    <!-- Tabla comparativa mejorada -->
+                    <div style="margin-top: 2rem; overflow-x: auto;">
+                        <h4 style="margin-bottom: 1rem;"><i class="fas fa-balance-scale"></i> Quick Comparison</h4>
+                        <table
+                            style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);">
+                            <thead>
+                                <tr style="background: var(--primary); color: white;">
+                                    <th style="padding: 12px; text-align: left;">Type</th>
+                                    <th style="padding: 12px; text-align: center;">Speed</th>
+                                    <th style="padding: 12px; text-align: center;">Cost</th>
+                                    <th style="padding: 12px; text-align: center;">Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 12px;"><i class="fas fa-hdd"></i> HDD</td>
+                                    <td style="padding: 12px; text-align: center;">🐢 Slow</td>
+                                    <td style="padding: 12px; text-align: center;">💰 Cheap</td>
+                                    <td style="padding: 12px; text-align: center;">Photos, Movies</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 12px;"><i class="fas fa-sd-card"></i> SSD</td>
+                                    <td style="padding: 12px; text-align: center;">⚡ Fast</td>
+                                    <td style="padding: 12px; text-align: center;">💸 Medium</td>
+                                    <td style="padding: 12px; text-align: center;">OS, Games</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 12px;"><i class="fas fa-memory"></i> RAM</td>
+                                    <td style="padding: 12px; text-align: center;">🚀 Very Fast</td>
+                                    <td style="padding: 12px; text-align: center;">💎 Expensive</td>
+                                    <td style="padding: 12px; text-align: center;">Multitasking</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px;"><i class="fas fa-cloud"></i> Cloud</td>
+                                    <td style="padding: 12px; text-align: center;">🌐 Variable</td>
+                                    <td style="padding: 12px; text-align: center;">📅 Subscription</td>
+                                    <td style="padding: 12px; text-align: center;">Backup, Sharing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="selectionResult"
+                        style="margin-top: 1.5rem; padding: 1rem; background: var(--light); border-radius: 10px; display: none;">
                         <h3 id="resultTitle"></h3>
                         <p id="resultDescription"></p>
                     </div>
                 </div>
-                
+
                 <div>
                     <div class="quiz-container">
                         <div class="quiz-question">
                             What do you think will be the next storage revolution?
                         </div>
                         <div class="quiz-options">
-                            <div class="quiz-option" onclick="showAnswer(this, 'Interesting idea! Prototypes already exist that can store data in special crystals.', 'slide5')">
-                                Crystals that store data forever
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Interesting idea! Microsoft is already testing " Project
+                                Silica" - storing data in quartz glass that lasts for 10,000+ years.', 'slide5' )">
+                                Glass crystals that last forever
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'Some companies already offer brain storage for simple data, but it\'s very experimental!', 'slide5')">
-                                Memory connected to our brain
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Yes! Holographic storage uses lasers to store data in 3D crystals, potentially holding 1TB in a sugar-cube size.', 'slide5')">
+                                Holographic 3D storage
                             </div>
-                            <div class="quiz-option" onclick="showAnswer(this, 'Exactly! Research is already happening on using electron spin to store more data in less space.', 'slide5')">
-                                Storage in particle "spin"
+                            <div class="quiz-option"
+                                onclick="showAnswer(this, 'Correct! DNA can store 215 petabytes (215 million GB) in just 1 gram - all of internet in a shoebox!', 'slide5')">
+                                DNA biological storage
                             </div>
                         </div>
                     </div>
 
+                    <!-- Tecnologías Futuras Mejoradas -->
                     <div style="margin-top: 1.5rem;">
-                        <h4><i class="fas fa-cloud"></i> The Future is Here</h4>
-                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-                            <p><strong>Cloud Storage:</strong> Like renting extra space only when needed</p>
-                            <p><strong>DNA Storage:</strong> Entire internet in a shoebox!</p>
-                            <p><strong>Quantum Memory:</strong> Still in research labs</p>
+                        <h4><i class="fas fa-crystal-ball"></i> The Future of Storage</h4>
+
+                        <div
+                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                                <i class="fas fa-dna" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <strong>DNA Storage</strong>
+                                    <p style="margin: 5px 0 0; font-size: 0.9rem;">All internet data in a shoebox</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                                <i class="fas fa-atom" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <strong>Quantum Memory</strong>
+                                    <p style="margin: 5px 0 0; font-size: 0.9rem;">Data in multiple states at once</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <i class="fas fa-brain" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <strong>Neuromorphic Computing</strong>
+                                    <p style="margin: 5px 0 0; font-size: 0.9rem;">Memory that learns like a brain</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Estadísticas impactantes -->
+                    <div class="fun-fact" style="margin-top: 1.5rem;">
+                        <h4><i class="fas fa-chart-bar"></i> Amazing Storage Facts</h4>
+                        <p>📊 <strong>1956:</strong> 5MB = $50,000/year (size of 2 refrigerators)</p>
+                        <p>📊 <strong>Today:</strong> 5TB = $100 (fits in your pocket)</p>
+                        <p>📊 <strong>That's:</strong> 1,000,000x more storage for 500x less cost!</p>
                     </div>
 
                     <div class="fun-fact" style="margin-top: 1.5rem;">
                         <h4><i class="fas fa-home"></i> Memory House Metaphor</h4>
-                        <p><strong>Attic (HDD/SSD):</strong> Keep everything for years</p>
-                        <p><strong>Living Room (RAM):</strong> What you use today</p>
-                        <p><strong>Your Hands (Cache):</strong> What you use NOW</p>
+                        <p>🏠 <strong>Attic (HDD/Cloud):</strong> Long-term storage (years)</p>
+                        <p>🛋️ <strong>Living Room (SSD):</strong> Daily use storage</p>
+                        <p>👐 <strong>Your Hands (RAM):</strong> Active work memory</p>
+                        <p>🎒 <strong>Backpack (USB):</strong> Portable storage</p>
                     </div>
                 </div>
             </div>
@@ -911,7 +1250,8 @@
             </div>
 
             <div class="question-bubble">
-                <strong>Final Question for You:</strong> After this presentation, which type of memory will you upgrade first?
+                <strong>Final Question for You:</strong> After this presentation, which type of memory will you upgrade
+                first?
             </div>
 
             <div style="text-align: center; margin-top: 2rem;">
@@ -922,12 +1262,14 @@
                 <p style="margin-top: 1rem; color: #666; max-width: 600px; margin-left: auto; margin-right: auto;">
                     We hope you enjoyed learning about computer memory evolution. Any questions?
                 </p>
-                
+
                 <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                    <button onclick="goToSlide(1)" style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    <button onclick="goToSlide(1)"
+                        style="background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-redo"></i> Back to Start
                     </button>
-                    <button onclick="location.reload()" style="background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    <button onclick="location.reload()"
+                        style="background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-play"></i> Restart Show
                     </button>
                 </div>
@@ -935,11 +1277,24 @@
                 <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #eee;">
                     <h4>Team Members:</h4>
                     <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
-                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Person 1: Introduction</span>
-                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Person 2: RAM</span>
-                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Person 3: HDD</span>
-                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Person 4: SSD & Future</span>
+                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Dulce</span>
+                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Arlet</span>
+                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Sona</span>
+                        <span style="background: #f0f0f0; padding: 0.5rem 1rem; border-radius: 20px;">Jorge</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PARA IMÁGENES AMPLIADAS -->
+        <div class="image-modal" id="imageModal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()">×</button>
+                <img id="modalImage" class="modal-img" src="" alt="Memory technology">
+                <div class="modal-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                    <p id="modalYear" style="color: var(--primary); font-weight: bold;"></p>
                 </div>
             </div>
         </div>
@@ -951,11 +1306,11 @@
             <i class="fas fa-arrow-left"></i>
             Previous
         </button>
-        
+
         <div class="slide-indicators" id="slideIndicators">
             <!-- Indicators generated by JavaScript -->
         </div>
-        
+
         <button class="control-btn" id="nextSlide">
             Next
             <i class="fas fa-arrow-right"></i>
@@ -965,36 +1320,166 @@
     <script>
         // Global variables
         let currentSlide = 1;
-        const totalSlides = 6; // Exactly 6 slides now
-        
+        const totalSlides = 6;
+
+        // ========== NUEVO CÓDIGO PARA LÍNEA DE TIEMPO ==========
+        // Datos para la línea de tiempo de imágenes
+        const memoryTimelineData = [
+            {
+                year: "1890",
+                name: "Punched Cards",
+                description: "First programmable storage - holes in paper cards represented data",
+                image: "/img1.jpg",
+                icon: "far fa-rectangle-list"
+            },
+            {
+                year: "1950",
+                name: "Magnetic Tape",
+                description: "Reel-to-reel tapes for mainframe computers",
+                image: "/img2.jpg",
+                icon: "fas fa-tape"
+            },
+            {
+                year: "1970",
+                name: "Floppy Disk",
+                description: "8-inch then 5.25-inch and 3.5-inch portable magnetic disks",
+                image: "/img3.jpg",
+                icon: "fas fa-save"
+            },
+            {
+                year: "1956",
+                name: "Hard Disk Drive",
+                description: "IBM RAMAC - 5MB, size of 2 refrigerators",
+                image: "/img4.WEBP",
+                icon: "fas fa-hdd"
+            },
+            {
+                year: "1982",
+                name: "CD/DVD",
+                description: "Compact Disc (700MB) and Digital Versatile Disc (4.7-17GB)",
+                image: "/img5.AVIF",
+                icon: "fas fa-compact-disc"
+            },
+            {
+                year: "2000",
+                name: "USB Flash Drive",
+                description: "Portable flash memory - 8MB to 2TB today",
+                image: "/img6.jpg",
+                icon: "fas fa-usb"
+            },
+            {
+                year: "2008",
+                name: "Solid State Drive",
+                description: "No moving parts - 5-10x faster than HDD",
+                image: "/img7.jpg",
+                icon: "fas fa-sd-card"
+            },
+            {
+                year: "2011",
+                name: "NVMe SSD",
+                description: "Non-Volatile Memory Express - PCIe-based storage with ultra-high speeds (up to 7,000 MB/s)",
+                image: "/img8.WEBP",
+                icon: "fas fa-bolt"
+            },
+            {
+                year: "Today",
+                name: "Cloud Storage",
+                description: "Remote storage accessible via internet (iCloud, Google Drive, OneDrive) with automatic sync and backup",
+                image: "/img9.jpg",
+                icon: "fas fa-cloud"
+            }
+        ];
+
+        // Función para crear la línea de tiempo de imágenes
+        function createMemoryTimeline() {
+            const timelineContainer = document.getElementById('memoryTimeline');
+            if (!timelineContainer) return;
+
+            memoryTimelineData.forEach((item, index) => {
+                const memoryItem = document.createElement('div');
+                memoryItem.className = 'memory-item';
+                memoryItem.setAttribute('data-index', index);
+
+                memoryItem.innerHTML = `
+                    <div class="memory-year">${item.year}</div>
+                    <div class="memory-img-container" onclick="openModal(${index})">
+                        <img src="${item.image}" alt="${item.name}" class="memory-img" loading="lazy">
+                    </div>
+                    <div class="memory-name">${item.name}</div>
+                `;
+
+                timelineContainer.appendChild(memoryItem);
+            });
+        }
+
+        // Modal functions
+        function openModal(index) {
+            const item = memoryTimelineData[index];
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalYear = document.getElementById('modalYear');
+
+            modalImage.src = item.image;
+            modalImage.alt = item.name;
+            modalTitle.textContent = item.name;
+            modalDescription.textContent = item.description;
+            modalYear.textContent = `Year: ${item.year}`;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('imageModal')?.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        // ========== FIN DEL NUEVO CÓDIGO ==========
+
         // Initialize presentation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initPresentation();
             updateSlideIndicators();
-            // Don't auto-animate stats, wait for slide 3
+            createMemoryTimeline(); // Añade esta línea
         });
-        
+
         // Initialize presentation
         function initPresentation() {
             // Main navigation
             document.getElementById('prevBtn').addEventListener('click', prevSlide);
             document.getElementById('nextBtn').addEventListener('click', nextSlide);
-            
+
             // Bottom controls
             document.getElementById('prevSlide').addEventListener('click', prevSlide);
             document.getElementById('nextSlide').addEventListener('click', nextSlide);
-            
+
             // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'ArrowLeft') prevSlide();
                 if (e.key === 'ArrowRight') nextSlide();
-                if (e.key === ' ') nextSlide(); // Space also advances
+                if (e.key === ' ') nextSlide();
             });
-            
+
             // Initial button state
             updateNavigation();
         }
-        
+
         // Go to previous slide
         function prevSlide() {
             if (currentSlide > 1) {
@@ -1004,7 +1489,7 @@
                 updateSlideIndicators();
             }
         }
-        
+
         // Go to next slide
         function nextSlide() {
             if (currentSlide < totalSlides) {
@@ -1014,36 +1499,36 @@
                 updateSlideIndicators();
             }
         }
-        
+
         // Show specific slide
         function showSlide(slideNumber) {
             // Hide all slides
             document.querySelectorAll('.slide').forEach(slide => {
                 slide.classList.remove('active');
             });
-            
+
             // Show current slide
             document.getElementById('slide' + slideNumber).classList.add('active');
-            
+
             // Update currentSlide
             currentSlide = slideNumber;
-            
+
             // Animate statistics if we're on slide 3 (HDD)
             if (currentSlide === 3) {
                 setTimeout(animateStats, 300);
             }
         }
-        
+
         // Update navigation button states
         function updateNavigation() {
             const isFirstSlide = currentSlide === 1;
             const isLastSlide = currentSlide === totalSlides;
-            
+
             document.getElementById('prevBtn').disabled = isFirstSlide;
             document.getElementById('prevSlide').disabled = isFirstSlide;
             document.getElementById('nextBtn').disabled = isLastSlide;
             document.getElementById('nextSlide').disabled = isLastSlide;
-            
+
             // Change next button text on last slide
             if (isLastSlide) {
                 document.getElementById('nextBtn').innerHTML = 'Finish <i class="fas fa-flag-checkered"></i>';
@@ -1053,12 +1538,14 @@
                 document.getElementById('nextSlide').innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
             }
         }
-        
+
         // Update slide indicators
         function updateSlideIndicators() {
             const indicatorsContainer = document.getElementById('slideIndicators');
+            if (!indicatorsContainer) return;
+
             indicatorsContainer.innerHTML = '';
-            
+
             for (let i = 1; i <= totalSlides; i++) {
                 const indicator = document.createElement('div');
                 indicator.className = 'indicator';
@@ -1073,17 +1560,17 @@
                 indicatorsContainer.appendChild(indicator);
             }
         }
-        
+
         // Show answer in quiz
         function showAnswer(element, answer, slideId) {
             // Remove previous selection in this slide
             document.querySelectorAll('#' + slideId + ' .quiz-option').forEach(opt => {
                 opt.style.background = 'rgba(255, 255, 255, 0.2)';
             });
-            
+
             // Highlight selection
             element.style.background = 'rgba(255, 255, 255, 0.4)';
-            
+
             // Create or update feedback message
             let feedbackDiv = document.getElementById('quizFeedback-' + slideId);
             if (!feedbackDiv) {
@@ -1097,25 +1584,25 @@
                 feedbackDiv.style.borderLeft = '5px solid var(--success)';
                 element.parentNode.parentNode.appendChild(feedbackDiv);
             }
-            
+
             feedbackDiv.innerHTML = `<strong><i class="fas fa-lightbulb"></i> Answer:</strong> ${answer}`;
         }
-        
-        // Select memory type
+
+        // Select memory type (actualizada para incluir cloud)
         function selectMemory(element, type) {
             // Remove previous selection
             document.querySelectorAll('.memory-card').forEach(card => {
                 card.style.borderColor = 'transparent';
             });
-            
+
             // Highlight selection
             element.style.borderColor = 'var(--accent)';
-            
+
             // Show result
             const resultDiv = document.getElementById('selectionResult');
             const title = document.getElementById('resultTitle');
             const description = document.getElementById('resultDescription');
-            
+
             const recommendations = {
                 'hdd': {
                     title: 'You chose HDD!',
@@ -1128,32 +1615,36 @@
                 'ram': {
                     title: 'You need more RAM!',
                     description: 'If your computer slows down with many tabs open, you need more RAM. It\'s like making your work desk bigger.'
+                },
+                'cloud': {
+                    title: 'Cloud is your choice!',
+                    description: 'Great for accessibility and sharing. Access your files from anywhere with internet. Perfect for collaboration and backups.'
                 }
             };
-            
+
             if (recommendations[type]) {
                 title.textContent = recommendations[type].title;
                 description.textContent = recommendations[type].description;
                 resultDiv.style.display = 'block';
             }
         }
-        
+
         // Animate statistics (for HDD slide)
         function animateStats() {
             // Only animate if we're on the HDD slide (slide 3)
-            if (document.getElementById('slide3').classList.contains('active')) {
+            if (document.getElementById('slide3')?.classList.contains('active')) {
                 animateCounter('hddSpeed', 160, 0, 1000);
                 animateCounter('hddSize', 22, 0, 1500);
                 animateCounter('hddRpm', 7200, 0, 2000);
             }
         }
-        
+
         // Animate counter
         function animateCounter(id, target, current, duration) {
             const element = document.getElementById(id);
             if (!element) return;
-            
-            const increment = target / (duration / 16); // 60fps
+
+            const increment = target / (duration / 16);
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -1163,7 +1654,7 @@
                 element.textContent = Math.floor(current);
             }, 16);
         }
-        
+
         // Go to specific slide
         function goToSlide(slideNumber) {
             if (slideNumber >= 1 && slideNumber <= totalSlides) {
@@ -1172,23 +1663,23 @@
                 updateSlideIndicators();
             }
         }
-        
+
         // Make presentation more interactive
         // Click logo to return to start
-        document.querySelector('.logo').addEventListener('click', () => {
+        document.querySelector('.logo')?.addEventListener('click', () => {
             goToSlide(1);
         });
-        
+
         // Celebration effect on completion
         function celebrateCompletion() {
             if (currentSlide === totalSlides) {
                 console.log("Presentation completed successfully!");
             }
         }
-        
+
         // Call celebrateCompletion when changing slides
         const originalNextSlide = nextSlide;
-        nextSlide = function() {
+        nextSlide = function () {
             originalNextSlide();
             if (currentSlide === totalSlides) {
                 setTimeout(celebrateCompletion, 300);
@@ -1196,4 +1687,5 @@
         };
     </script>
 </body>
+
 </html>
