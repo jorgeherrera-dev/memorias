@@ -2,121 +2,121 @@
 const dispositivos = [
     {
         year: 1725,
-        name: "Tarjetas Perforadas",
+        name: "Punched Cards",
         icon: "fas fa-th-large",
-        info: "Las tarjetas perforadas fueron el primer medio de almacenamiento de datos, utilizadas en telares automáticos y posteriormente en máquinas tabuladoras. Cada agujero representaba un bit de información, permitiendo programar máquinas y almacenar datos de forma mecánica.",
-        img:"img1.jpg"
+        info: "Punched cards were the first data storage medium, used in automatic looms and later in tabulating machines. Each hole represented a bit of information, allowing machines to be programmed and data to be stored mechanically.",
+        img: "img1.jpg"
     },
     {
         year: 1940,
-        name: "Memoria Núcleo Magnético",
+        name: "Magnetic Core Memory",
         icon: "fas fa-magnet",
-        info: "La memoria de núcleo magnético fue la principal forma de memoria RAM entre los años 1950 y 1970. Consistía en pequeños anillos de ferrita magnetizados que almacenaban bits mediante polaridad magnética. Fue fundamental para las primeras computadoras comerciales.",
+        info: "Magnetic core memory was the main form of RAM between the 1950s and 1970s. It consisted of small magnetized ferrite rings that stored bits through magnetic polarity. It was fundamental for early commercial computers.",
         img: "img2.jpg"
     },
     {
         year: 1948,
-        name: "Memoria RAM",
+        name: "RAM Memory",
         icon: "fas fa-microchip",
-        info: "La memoria de acceso aleatorio (RAM) es una memoria volátil que permite leer y escribir datos. La primera RAM fue la memoria de tubo Williams en 1948, que usaba un tubo de rayos catódicos para almacenar bits como puntos cargados en la pantalla.",
+        info: "Random Access Memory (RAM) is a volatile memory that allows reading and writing data. The first RAM was the Williams tube memory in 1948, which used a cathode ray tube to store bits as charged dots on the screen.",
         img: "img3.jpg"
     },
     {
         year: 1956,
-        name: "Unidad de Disco Duro",
+        name: "Hard Disk Drive",
         icon: "fas fa-hdd",
-        info: "El primer disco duro comercial fue el IBM 350, parte del sistema RAMAC 305. Tenía una capacidad de 5 MB, pesaba una tonelada y usaba 50 discos de 24 pulgadas. Revolucionó el almacenamiento al permitir acceso aleatorio a grandes volúmenes de datos.",
+        info: "The first commercial hard drive was the IBM 350, part of the RAMAC 305 system. It had a capacity of 5 MB, weighed one ton, and used fifty 24-inch disks. It revolutionized storage by allowing random access to large volumes of data.",
         img: "img4.jpg"
     },
     {
         year: 1960,
-        name: "Motor Analítico",
+        name: "Analytical Engine",
         icon: "fas fa-cogs",
-        info: "Aunque concebido en el siglo XIX por Charles Babbage, el Motor Analítico inspiró conceptos de almacenamiento programable. Habría utilizado tarjetas perforadas para almacenar programas y datos, siendo un precursor teórico de las computadoras modernas.",
+        info: "Although conceived in the 19th century by Charles Babbage, the Analytical Engine inspired concepts of programmable storage. It would have used punched cards to store programs and data, being a theoretical precursor to modern computers.",
         img: "img5.jpg"
     },
     {
         year: 1965,
-        name: "Cinta Magnética",
+        name: "Magnetic Tape",
         icon: "fas fa-tape",
-        info: "Las cintas magnéticas se popularizaron en los años 60 para backup y almacenamiento masivo. Ofrecían alta capacidad a bajo costo y se convirtieron en el estándar para respaldo de datos en empresas e instituciones durante décadas.",
+        info: "Magnetic tapes became popular in the 1960s for backup and mass storage. They offered high capacity at low cost and became the standard for data backup in businesses and institutions for decades.",
         img: "img6.jpg"
     },
     {
         year: 1966,
-        name: "Memoria de Servicios",
+        name: "Service Memory",
         icon: "fas fa-server",
-        info: "Sistemas de memoria dedicados para servicios de mainframe, optimizados para transacciones y procesamiento por lotes. Representaban la especialización de hardware para tareas específicas en entornos empresariales.",
+        info: "Dedicated memory systems for mainframe services, optimized for transactions and batch processing. They represented hardware specialization for specific tasks in business environments.",
         img: "img7.jpg"
     },
     {
         year: 1967,
-        name: "Disquete",
+        name: "Floppy Disk",
         icon: "fas fa-save",
-        info: "El disquete de 8 pulgadas, inventado por IBM, permitió por primera vez compartir datos entre computadoras de forma práctica. Evolucionó a 5.25\" y luego a 3.5\", siendo el estándar de almacenamiento portátil hasta finales de los 90.",
+        info: "The 8-inch floppy disk, invented by IBM, allowed data sharing between computers for the first time in a practical way. It evolved to 5.25\" and then 3.5\", becoming the portable storage standard until the late 90s.",
         img: "img8.jpg"
     },
     {
         year: 1975,
-        name: "Disco Óptico",
+        name: "Optical Disc",
         icon: "fas fa-compact-disc",
-        info: "Los discos ópticos usan láser para leer y escribir datos. El Laserdisc fue el primer formato comercial (1978), seguido por el CD (1982), DVD (1995) y Blu-ray (2006). Ofrecen mayor capacidad y durabilidad que medios magnéticos.",
+        info: "Optical discs use lasers to read and write data. Laserdisc was the first commercial format (1978), followed by CD (1982), DVD (1995), and Blu-ray (2006). They offer greater capacity and durability than magnetic media.",
         img: "img9.jpg"
     },
     {
         year: 1980,
         name: "Bubble Memory",
         icon: "fas fa-bubbles",
-        info: "La memoria de burbujas almacenaba datos en pequeños dominios magnéticos (burbujas) en una lámina de material magnético. Era no volátil y resistente, pero costosa y lenta. Se usó en sistemas embebidos y militares antes de ser superada por la flash.",
+        info: "Bubble memory stored data in small magnetic domains (bubbles) on a sheet of magnetic material. It was non-volatile and rugged, but expensive and slow. Used in embedded and military systems before being surpassed by flash memory.",
         img: "img10.jpg"
     },
     {
         year: 1990,
-        name: "Discos Magneto ópticos",
+        name: "Magneto-Optical Discs",
         icon: "fas fa-compact-disc",
-        info: "Combinaban tecnologías magnéticas y ópticas: un láser calienta el punto a escribir y un campo magnético cambia su polaridad. Ofrecían mayor capacidad que los disquetes y eran regrabables, usándose en backup profesional y almacenamiento especializado.",
+        info: "They combined magnetic and optical technologies: a laser heats the point to write and a magnetic field changes its polarity. They offered greater capacity than floppy disks and were rewritable, used in professional backup and specialized storage.",
         img: "img11.jpg"
     },
     {
         year: 2000,
-        name: "Unidades Flash",
+        name: "Flash Drives",
         icon: "fas fa-usb",
-        info: "Las memorias flash NAND permitieron crear dispositivos de almacenamiento sólido, portátiles y sin partes móviles. Desde las primeras memorias USB de 8 MB hasta las actuales de 2 TB, revolucionaron la portabilidad de datos.",
+        info: "NAND flash memories enabled the creation of solid-state, portable storage devices with no moving parts. From the first 8 MB USB drives to today's 2 TB drives, they revolutionized data portability.",
         img: "img12.jpg"
     },
     {
         year: 2009,
-        name: "Unidades de Estado Sólido (SSD)",
+        name: "Solid State Drives (SSD)",
         icon: "fas fa-bolt",
-        info: "Los SSD reemplazan discos duros mecánicos con memoria flash, ofreciendo velocidades 10-100 veces mayores, menor consumo y mayor resistencia a golpes. Se han convertido en estándar para computadoras de alto rendimiento.",
+        info: "SSDs replace mechanical hard drives with flash memory, offering speeds 10-100 times faster, lower power consumption, and greater shock resistance. They have become standard for high-performance computers.",
         img: "img13.jpg"
     },
     {
-        year: "Actualidad",
-        name: "Almacenamiento en la Nube",
+        year: "Current",
+        name: "Cloud Storage",
         icon: "fas fa-cloud",
-        info: "El almacenamiento en la nube permite guardar datos en servidores remotos accesibles por internet. Servicios como Google Drive, Dropbox y iCloud ofrecen acceso desde cualquier dispositivo, sincronización y copias de seguridad automáticas.",
+        info: "Cloud storage allows data to be stored on remote servers accessible via the internet. Services like Google Drive, Dropbox, and iCloud offer access from any device, synchronization, and automatic backups.",
         img: "img14.jpg"
     },
     {
-        year: "Futuro",
-        name: "ADN Digital",
+        year: "Future",
+        name: "Digital DNA",
         icon: "fas fa-dna",
-        info: "Investigaciones actuales exploran almacenar datos en moléculas de ADN sintético. Un gramo de ADN puede almacenar 215 petabytes (215 millones de GB) y conservarse miles de años. Podría ser la solución definitiva para archivo a largo plazo.",
+        info: "Current research explores storing data in synthetic DNA molecules. One gram of DNA can store 215 petabytes (215 million GB) and be preserved for thousands of years. It could be the ultimate solution for long-term archiving.",
         img: "img15.jpg"
     },
     {
-        year: "Conceptos",
-        name: "Lago de Datos",
+        year: "Concepts",
+        name: "Data Lake",
         icon: "fas fa-database",
-        info: "Un repositorio que almacena grandes volúmenes de datos en su formato nativo, sin estructura predefinida. Permite análisis avanzado, machine learning y procesamiento de big data, contrastando con los silos de datos tradicionales.",
+        info: "A repository that stores large volumes of data in its native format, without predefined structure. It enables advanced analytics, machine learning, and big data processing, contrasting with traditional data silos.",
         img: "img16.jpg"
     },
     {
-        year: "Arquitectura",
-        name: "Silos de Datos",
+        year: "Architecture",
+        name: "Data Silos",
         icon: "fas fa-warehouse",
-        info: "Sistemas de almacenamiento aislados que no se integran con otros sistemas. Aunque permiten procesamiento eficiente dentro de su ámbito, dificultan el análisis global. La tendencia actual es migrar a arquitecturas de datos unificadas.",
+        info: "Isolated storage systems that do not integrate with other systems. While they enable efficient processing within their scope, they hinder global analysis. The current trend is to migrate to unified data architectures.",
         img: "img17.JPEG"
     }
 ];
@@ -151,7 +151,7 @@ function crearTarjetas() {
             <div class="device-icon">
                 <i class="${dispositivo.icon}"></i>
             </div>
-            <div class="click-info">Haz clic para más información</div>
+            <div class="click-info">Clic here</div>
         `;
         
         card.addEventListener('click', () => mostrarInfo(dispositivo));
