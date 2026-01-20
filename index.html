@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución de los Dispositivos de Almacenamiento</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-history"></i> Evolución de los Dispositivos de Almacenamiento</h1>
+            <p class="subtitle">Haz clic en cualquier dispositivo para conocer su historia</p>
+        </header>
+
+        <div class="timeline">
+            <!-- Las tarjetas se generarán con JavaScript -->
+        </div>
+
+        <!-- Modal para mostrar información detallada -->
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Título</h2>
+                <p id="modalYear"></p>
+                <div id="modalInfo">
+                    <p>Información detallada aparecerá aquí...</p>
+                </div>
+                <div class="modal-image">
+                    <img id="modalImg" src="" alt="">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Línea de tiempo interactiva &copy; 2024 | Diseño responsivo para dispositivos móviles</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
